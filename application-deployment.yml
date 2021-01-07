@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: application-deployment
+  labels:
+    app: demo-app
+spec:
+  replicas: 1 
+  selector:
+    matchLabels:
+      name: application-pod
+      app: demo-app
+  template:
+    metadata:
+      name: application-pod
+      labels:
+        name: application-pod
+        app: demo-app
+        
+    spec:
+      containers:
+       - name: result-app
+         image: rahulkrlti/spring-jpa-app:latest
+         ports:
+          - containerPort: 8087
