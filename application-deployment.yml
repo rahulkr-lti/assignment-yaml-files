@@ -19,7 +19,7 @@ spec:
         
     spec:
       containers:
-       - name: result-app
+       - name: spring-jpa-app-container
          image: rahulkrlti/spring-jpa-app:latest
          ports:
           - containerPort: 8087
