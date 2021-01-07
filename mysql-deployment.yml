@@ -21,5 +21,21 @@ spec:
       containers:
        - name: mysql
          image: mysql:latest
+         env:
+          - name: MYSQL_ROOT_PASSWORD
+            value: root123
+          - name: MYSQL_DATABASE
+            value: spring_app_db
+          - name: MYSQL_USER
+            value: app_user
+          - name: MYSQL_PASSWORD
+            value: test123
          ports:
           - containerPort: 3306
+         volumeMounts:
+          - name: mysql-persistent-storage
+            mountPath: /var/lib/mysql
+      volumes:
+       - name: mysql-persistent-storage
+         persistentVolumeClaim:
+           claimName: mysql-pv-claim          
